@@ -45,6 +45,16 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|Win32'">
   </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <MinimalRebuild>true</MinimalRebuild>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
+    </ClCompile>
+  </ItemDefinitionGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|Win32'" Label="QtSettings">
     <QtInstall>5.9.9_msvc2015</QtInstall>
     <QtModules>core;gui;widgets</QtModules>
@@ -85,11 +95,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="IndicatorSpeedVector.cpp" />
+    <ClCompile Include="tinyxml2.cpp" />
     <QtRcc Include="Hud.qrc" />
     <QtUic Include="Hud.ui" />
     <QtMoc Include="Hud.h" />
     <ClCompile Include="Hud.cpp" />
+    <ClCompile Include="IndicatorBase.cpp" />
     <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="IndicatorBase.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="IndicatorSpeedVector.h" />
+    <ClInclude Include="tinyxml2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
