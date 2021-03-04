@@ -4,9 +4,12 @@ Hud::Hud(QWidget *parent)
 	: QMainWindow(parent)
 {
 	ui.setupUi(this);
+	this->setAttribute(Qt::WA_TranslucentBackground);
+	this->setWindowFlags(Qt::FramelessWindowHint | Qt::WindowSystemMenuHint | Qt::WindowMinimizeButtonHint);
+	//this->installEventFilter(this);
 
 	pixmap_ = QPixmap(size());//新建pixmap
-	pixmap_.fill(Qt::white);//背景色填充为白色
+	pixmap_.fill(Qt::transparent);//背景色填充为白色
 
 	IndicatorBase* speed_vector = new IndicatorSpeedVector(this);
 	speed_vector->setParent(this);
@@ -32,7 +35,7 @@ void Hud::paintEvent(QPaintEvent *)
 
 	QPixmap pix = pixmap_;//以_pixmap作为画布
 	QPainter painter(&pix);//将_pixmap作为画布
-	unsigned int i1 = 0, i2 = 0, i3 = 0, i4 = 0, i5 = 0;//各种图形的索引
+	painter.setRenderHint(QPainter::Antialiasing, true);
 
 	QListIterator<IndicatorBase*> it(indicator_list_);
 	while (it.hasNext())
