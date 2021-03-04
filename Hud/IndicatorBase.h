@@ -17,8 +17,7 @@ public:
 	IndicatorBase(QObject *parent = NULL);
 	~IndicatorBase();
 
-	virtual void setParent(QPaintDevice* parent);
-	virtual void update();
+	virtual void update(QPainter* painter);
 	virtual void loadeSetting(XMLElement* elment);
 
 protected:
@@ -26,5 +25,4 @@ protected:
 	int offset_y_ = 0;
 	QMap<QString, QVariant> setting_map_;
 	QPaintDevice* parent_;
-	QPainter* painter_;
 };

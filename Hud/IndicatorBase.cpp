@@ -9,16 +9,8 @@ IndicatorBase::~IndicatorBase()
 {
 }
 
-void IndicatorBase::setParent(QPaintDevice* parent)
-{
-	if (parent)
-	{
-		parent_ = parent;
-		painter_ = new QPainter(parent);
-	}
-}
 
-void IndicatorBase::update()
+void IndicatorBase::update(QPainter* painter)
 {
 }
 

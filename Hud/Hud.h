@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QTimer>
+#include <QPixmap>
 
 #include <QtWidgets/QMainWindow>
 #include "ui_Hud.h"
@@ -12,6 +13,7 @@ class Hud : public QMainWindow
 
 public:
 	Hud(QWidget *parent = Q_NULLPTR);
+	void paintEvent(QPaintEvent *);
 
 private:
 	Ui::HudClass ui;
@@ -19,7 +21,8 @@ private:
 	QList<IndicatorBase*> indicator_list_;
 
 	QTimer* update_timer_;
+	QPixmap pixmap_;
 
 	private slots:
-	void update();
+	void updateIndicator();
 };

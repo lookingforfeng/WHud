@@ -9,7 +9,13 @@ IndicatorSpeedVector::~IndicatorSpeedVector()
 {
 }
 
-void IndicatorSpeedVector::update()
+void IndicatorSpeedVector::update(QPainter* painter)
 {
-	qDebug() << "IndicatorSpeedVector is updateing";
+	static int i;
+	i++;
+	qDebug() << "IndicatorSpeedVector updating";
+	painter->setPen(Qt::blue);
+	painter->setFont(QFont("Arial", 30 + 0.01 * i));
+	QRectF rectangle(10.0, 20.0, 300, 300);
+	painter->drawText(rectangle, Qt::AlignCenter, QString::number(i));
 }
